@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - HorariosAca</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .home-main {
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CONTENEDOR NAVBAR  MODULAR -->
+    <header id="main-navbar"></header>
+
+    <main class="home-main">
+        <!-- TEXTO SUP IZQUIERDO -->
+        <section class="hero-intro">
+            <div class="purple-banner-main">
+                <h2 data-i18n="home_hero_title">Programa para crear Horario Académico:</h2>
+                <ul>
+                    <li data-i18n="home_hero_step1">Monte su horario en pocos pasos</li>
+                    <li data-i18n="home_hero_step2">Sistema online sin instalación</li>
+                    <li data-i18n="home_hero_step3">Mejor costo beneficio del mercado</li>
+                    <li data-i18n="home_hero_step4">*Soporte vía WhatsApp y Correo Electrónico</li>
+                </ul>
+            </div>
+        </section>
+    
+        <!-- CARRUSEL E INFO PREMIUM -->
+        <section class="promo-section">
+            <!-- IMAGENES DEL CARRUSEL -->
+            <div class="carousel-container">
+                <div class="carousel-slide">
+                    <img src="img/horario1.jpg" alt="Ejemplo 1">
+                    <img src="img/horario2.jpg" alt="Ejemplo 2">
+                    <img src="img/horario3.jpg" alt="Ejemplo 3">
+                </div>
+            </div>
+    
+            <!-- VENTAJAS PREMIUM -->
+            <div class="purple-premium-box">
+                <a href="plans.html" class="premium-link" data-i18n="home_premium_click">
+                    ¡Da clic aquí, para obtener tu plan Premium!
+                </a>
+                
+                <div class="premium-advantages">
+                    <h3 data-i18n="home_adv_title">Ventajas de Horarios ACA de pago:</h3>
+                    <ul>
+                        <li data-i18n="home_adv_1">Generación automática de horarios.</li>
+                        <li data-i18n="home_adv_2">Edición avanzada: editar y eliminar.</li>
+                        <li data-i18n="home_adv_3">Exportación y descarga: PDF y Excel.</li>
+                        <li data-i18n="home_adv_4">Acceso total a todos los módulos.</li>
+                    </ul>
+    
+                    <h3 data-i18n="home_feat_title">Con el programa es posible:</h3>
+                    <ul>
+                        <li data-i18n="home_feat_1">Disponibilidad de cada profesor.</li>
+                        <li data-i18n="home_feat_2">Configurar disposición de aulas (geminadas, etc.).</li>
+                        <li data-i18n="home_feat_3">Limitar clases diarias/semanales.</li>
+                        <li data-i18n="home_feat_4">Minimizar espacios en blanco de profesores.</li>
+                        <li data-i18n="home_feat_5">Reuniones o actividades extras.</li>
+                        <li data-i18n="home_feat_6">Turnos totalmente configurables.</li>
+                        <li data-i18n="home_feat_7">Resultados por Sala, Profesor y General.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER MODULAR-->
+    <footer id="main-footer"></footer>
+
+    <!-- SCRIPTS EN ORDEN DE EJECUCIÓN IMPORTANTE!!! TIENEN QUE IR EN ESTE ORDEN -->
+    
+    <!-- MODULARES-->
+    <script src="navbar.js"></script>
+    <script src="footer.js"></script>
+    
+    <!-- TRANSLATE -->
+    <script src="translations.js"></script>
+    <script src="language-switcher.js"></script>
+
+    <!-- PERSISTENCIA IDIOMA-->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem("preferred_lang") || 'en';
+            setTimeout(() => {
+                if (typeof applyTranslations === 'function') {
+                    applyTranslations(savedLang);
+                }
+            }, 50); 
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Carrusel Automatico
+            let currentSlide = 0;
+            const slides = document.querySelectorAll('.carousel-slide img');
+            
+            function nextSlide() {
+                if (slides.length === 0) return;
+
+                // Ocultar todas las imágenes
+                slides.forEach(img => img.style.display = 'none');
+                
+                // Avanzar al siguiente índice
+                currentSlide++;
+                if (currentSlide >= slides.length) {
+                    currentSlide = 0;
+                }
+                
+                // Mostrar la imagen actual
+                slides[currentSlide].style.display = 'block';
+            }
+
+            // Inicialización del carrusel
+            if (slides.length > 0) {
+                // Solo mostramos la primera imagen al empezar
+                slides.forEach((img, index) => {
+                    img.style.display = index === 0 ? 'block' : 'none';
+                });
+                
+                // Cambiar cada 3 segundos
+                setInterval(nextSlide, 3000);
+            }
+
+            // --- PERSISTENCIA DE IDIOMA ---
+            const savedLang = localStorage.getItem("preferred_lang") || 'en';
+            setTimeout(() => {
+                if (typeof applyTranslations === 'function') {
+                    applyTranslations(savedLang);
+                }
+            }, 50); 
+        });
+    </script>
+</body>
+</html>

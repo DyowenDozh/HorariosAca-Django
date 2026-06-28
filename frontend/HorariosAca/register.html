@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - HorariosAca</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header id="main-navbar"></header>
+
+<main class="register-container">
+    <form id="register-form" class="register-box">
+        <h2 data-i18n="register_title">Register - HorariosAca</h2>
+
+        <div class="input-group">
+            <label for="email" data-i18n="label_user">Email</label>
+            <input type="email" id="email" placeholder="example@email.com" required>
+            <span id="email-error" class="error-msg"></span>
+        </div>
+
+        <div class="input-group">
+            <label for="password" data-i18n="label_password">Password</label>
+            <div class="password-wrapper" style="position: relative; display: flex; align-items: center;">
+                <input type="password" id="password" placeholder="********" style="width: 100%; padding-right: 40px;" required>
+                <button type="button" class="toggle-password" data-target="password" style="position: absolute; right: 10px; background: none; border: none; cursor: pointer;">
+                    <svg class="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                </button>
+            </div>
+            <span id="password-error" class="error-msg"></span>
+        </div>
+
+        <div class="input-group">
+            <label for="confirm-password" data-i18n="label_confirm_password">Confirm Password</label>
+            <div class="password-wrapper" style="position: relative; display: flex; align-items: center;">
+                <input type="password" id="confirm-password" placeholder="********" style="width: 100%; padding-right: 40px;" required>
+                <button type="button" class="toggle-password" data-target="confirm-password" style="position: absolute; right: 10px; background: none; border: none; cursor: pointer;">
+                    <svg class="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                </button>
+            </div>
+            <span id="confirm-password-error" class="error-msg"></span>
+        </div>
+
+        <button type="submit" id="submitBtn" data-i18n="btn_register">Register</button>
+        
+        <div id="globalMessage"></div>
+        
+        <p>
+            <span data-i18n="have_account">Already have an account?</span> 
+            <a href="login.html" data-i18n="link_login">Login</a>
+        </p>
+    </form>
+</main>
+
+<footer id="main-footer"></footer>
+
+<script src="navbar.js"></script>
+<script src="footer.js"></script> 
+<script src="register.js"></script>
+<script src="support.js"></script>
+<script src="translations.js"></script>
+<script src="language-switcher.js"></script>
+</body>
+</html>

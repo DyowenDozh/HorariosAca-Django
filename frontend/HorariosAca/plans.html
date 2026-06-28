@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <!-- Configuracion basica del documento y carga de estilos -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upgrade Plan - HorariosAca</title>
+    <!-- Archivos CSS principales -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <main class="internal-content">
+        <header class="dashboard-header">
+            <div>
+                <h1 data-i18n="plans_title">Choose Your Plan</h1>
+                <p data-i18n="plans_subtitle">Select the option that best fits your academic needs.</p>
+            </div>
+
+            <!-- Selector de idioma -->
+            <div class="lang-selector">
+                <button id="lang-switch" class="lang-btn">
+                    🌐 <span id="current-lang-text">English</span>
+                </button>
+                <div id="lang-dropdown" class="dropdown-hidden">
+                    <button onclick="setLanguage('en')">English</button>
+                    <button onclick="setLanguage('es')">Español</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Sección de planes disponibles -->
+        <section id="plans-container" class="plans-grid">
+            <div class="plan-card">
+                <h2 data-i18n="plan_basic_name">Basic</h2>
+                <div class="price" data-i18n="price_free">Free</div>
+                <ul class="plan-features">
+                    <li><i class="check">✔</i> <span data-i18n="feat_view">View existing schedules</span></li>
+                    <li><i class="check">✔</i> <span data-i18n="feat_entry">Data entry (input subjects/teachers)</span></li>
+                    <li><i class="check">✔</i> <span data-i18n="feat_download">Download (PDF/JPG)</span></li>
+                    <li class="disabled"><i>✘</i> <span data-i18n="feat_gen_disabled">Automatic Schedule Generation</span></li>
+                    <li class="disabled"><i>✘</i> <span data-i18n="feat_edit_disabled">Manual Slot Editing (Drag & Drop)</span></li>
+                </ul>
+                <button class="btn-select" onclick="activatePlan('basic')" data-i18n="btn_basic">Continue with Basic</button>
+            </div>
+        
+            <div class="plan-card featured">
+                <div class="badge" data-i18n="badge_premium">Most Powerful</div>
+                <h2 data-i18n="plan_premium_name">Premium</h2>
+                <div class="price">$49.99 <span>USD</span></div>
+                <ul class="plan-features">
+                    <li><i class="check">✔</i> <strong data-i18n="feat_gen_engine">Automatic Generation Engine</strong></li>
+                    <li><i class="check">✔</i> <strong data-i18n="feat_manual_control">Manual Slot Control (Full Edit)</strong></li>
+                    <li><i class="check">✔</i> <span data-i18n="feat_conflict">Real-time Conflict Detection</span></li>
+                    <li><i class="check">✔</i> <span data-i18n="feat_unlimited">Manage Unlimited Grades & Teachers</span></li>
+                    <li><i class="check">✔</i> <span data-i18n="feat_priority">Priority Email Support</span></li>
+                </ul>
+                <div class="plan-actions">
+                    <button class="btn-select premium" onclick="activatePlan('premium')" data-i18n="btn_premium">Upgrade to Premium</button>
+                    <button class="btn-details" onclick="showPremiumDetails()" data-i18n="btn_why_premium">Why Premium?</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer dinamico -->
+    <footer id="main-footer"></footer>
+    <!-- modulares y utilidades -->
+    <script src="auth.js"></script>
+    <script src="sidebar.js"></script>
+    <script src="footer.js"></script>
+    <script src="support.js"></script>
+    <script src="plans.js"></script>
+
+    <script src="translations.js"></script>
+    <script src="language-switcher.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem("preferred_lang") || 'en';
+            setTimeout(() => {
+                if (typeof applyTranslations === 'function') {
+                    applyTranslations(savedLang);
+                }
+            }, 50); 
+        });
+    </script>
+</body>
+</html>

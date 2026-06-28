@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - HorariosAca</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header id="main-navbar"></header>
+<!-- LOGIN, esto es sencillo, creo que no necesita tanta explicacion-->
+<main class="login-container">
+    <form id="login-form" class="login-box">
+        <h2 data-i18n="login_title">Login - HorariosAca</h2>
+
+        <div class="input-group">
+            <label for="email" data-i18n="label_user">Email</label>
+            <input type="email" id="email" placeholder="example@email.com" required>
+            <span id="email-error" class="error-msg"></span>
+        </div>
+
+        <div class="input-group">
+            <label for="password" data-i18n="label_password">Password</label>
+            <input type="password" id="password" placeholder="********" required>
+            <span id="password-error" class="error-msg"></span>
+        </div>
+
+        <button type="submit" id="submitBtn" data-i18n="btn_login">Login</button>
+        
+        <div id="globalMessage"></div>
+        
+        <p>
+            <span data-i18n="no_account">Don't have an account?</span> 
+            <a href="register.html" data-i18n="link_register">Register</a>
+        </p>
+    </form>
+</main>
+<!-- SCRIPTS MODULARES-->
+<footer id="main-footer"></footer>
+
+<script src="navbar.js"></script>
+<script src="footer.js"></script> 
+
+<!-- SCRIPTS utilidades-->
+<script src="login.js"></script>
+<script src="support.js"></script>
+<script src="translations.js"></script>
+<script src="language-switcher.js"></script>
+</body>
+</html>

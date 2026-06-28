@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trash Bin - HorariosAca</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <main class="internal-content">
+        <header class="dashboard-header">
+            <div>
+                <h1 data-i18n="side_trash">Trash Bin</h1>
+                <p data-i18n="trash_desc">View and restore your recently deleted schedules.</p>
+            </div>
+             <!-- boton idioma-->
+            <div class="lang-selector">
+                <button id="lang-switch" class="lang-btn">
+                    🌐 <span id="current-lang-text">English</span>
+                </button>
+                <div id="lang-dropdown" class="dropdown-hidden">
+                    <button onclick="setLanguage('en')">English</button>
+                    <button onclick="setLanguage('es')">Español</button>
+                </div>
+            </div>
+        </header>
+
+        <section class="table-container">
+            <div id="trash-list-container">
+            </div>
+        </section>
+    </main>
+
+         <!-- modulares y utilidades -->
+    <footer id="main-footer"></footer>
+
+    <script src="auth.js"></script>
+    <script src="sidebar.js"></script>
+    <script src="footer.js"></script>
+    <script src="support.js"></script>
+
+    <script src="translations.js"></script>
+    <script src="language-switcher.js"></script>
+    <script src="trash.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem("preferred_lang") || 'en';
+            setTimeout(() => {
+                if (typeof applyTranslations === 'function') {
+                    applyTranslations(savedLang);
+                }
+            }, 50); 
+        });
+    </script>
+</body>
+</html>
