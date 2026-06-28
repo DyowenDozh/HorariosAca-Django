@@ -1,11 +1,12 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Account Settings - HorariosAca</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'dashboard.css' %}">
 </head>
 <body>
     <main class="internal-content">
@@ -14,7 +15,6 @@
                 <h1 data-i18n="settings_title">Account Settings</h1>
                 <p data-i18n="settings_subtitle">Update your account information and preferences.</p>
             </div>
-
             <div class="lang-selector">
                 <button id="lang-switch" class="lang-btn">
                     🌐 <span id="current-lang-text">English</span>
@@ -32,32 +32,26 @@
                     <label for="user-id" data-i18n="label_id">User ID</label>
                     <input type="text" id="user-id" readonly>
                 </div>
-
                 <div class="form-group">
                     <label for="user-name" data-i18n="label_name">Name</label>
                     <input type="text" id="user-name" required>
                 </div>
-
                 <div class="form-group">
                     <label for="user-email" data-i18n="label_email">Email Address</label>
                     <input type="email" id="user-email" readonly>
                 </div>
-
                 <div class="form-group">
                     <label for="new-password" data-i18n="label_new_password">New Password (leave blank to keep current)</label>
                     <input type="password" id="new-password" placeholder="••••••••">
                 </div>
-
                 <div class="form-group">
                     <label for="confirm-password" data-i18n="label_confirm_password">Confirm New Password</label>
                     <input type="password" id="confirm-password" placeholder="••••••••">
                 </div>
-
                 <div class="form-group">
                     <label for="user-created-at" data-i18n="label_created_at">Account Created On</label>
                     <input type="text" id="user-created-at" readonly>
                 </div>
-
                 <button type="submit" class="btn-submit" data-i18n="btn_save_changes">Save Changes</button>
             </form>
         </section>
@@ -65,20 +59,18 @@
         <button type="button" class="btn-delete-account" onclick="eliminarCuenta()">
             🗑️ <span data-i18n="btn_delete_account">Delete Account</span>
         </button>
-        
     </main>
 
     <footer id="main-footer"></footer>
-    
-    <script src="auth.js"></script>
-    <script src="sidebar.js"></script>
-    <script src="footer.js"></script>
-    <script src="support.js"></script>
-    <script src="plans.js"></script>
-    <script src="translations.js"></script>
-    <script src="language-switcher.js"></script>
-    
-    <script src="settings.js"></script>
+
+    <script src="{% static 'auth.js' %}"></script>
+    <script src="{% static 'sidebar.js' %}"></script>
+    <script src="{% static 'footer.js' %}"></script>
+    <script src="{% static 'support.js' %}"></script>
+    <script src="{% static 'plans.js' %}"></script>
+    <script src="{% static 'translations.js' %}"></script>
+    <script src="{% static 'language-switcher.js' %}"></script>
+    <script src="{% static 'settings.js' %}"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {

@@ -1,13 +1,12 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <!-- Configuracion basica del documento y carga de estilos -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upgrade Plan - HorariosAca</title>
-    <!-- Archivos CSS principales -->
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'dashboard.css' %}">
 </head>
 <body>
     <main class="internal-content">
@@ -16,8 +15,6 @@
                 <h1 data-i18n="plans_title">Choose Your Plan</h1>
                 <p data-i18n="plans_subtitle">Select the option that best fits your academic needs.</p>
             </div>
-
-            <!-- Selector de idioma -->
             <div class="lang-selector">
                 <button id="lang-switch" class="lang-btn">
                     🌐 <span id="current-lang-text">English</span>
@@ -29,7 +26,6 @@
             </div>
         </header>
 
-        <!-- Sección de planes disponibles -->
         <section id="plans-container" class="plans-grid">
             <div class="plan-card">
                 <h2 data-i18n="plan_basic_name">Basic</h2>
@@ -63,17 +59,15 @@
         </section>
     </main>
 
-    <!-- Footer dinamico -->
     <footer id="main-footer"></footer>
-    <!-- modulares y utilidades -->
-    <script src="auth.js"></script>
-    <script src="sidebar.js"></script>
-    <script src="footer.js"></script>
-    <script src="support.js"></script>
-    <script src="plans.js"></script>
 
-    <script src="translations.js"></script>
-    <script src="language-switcher.js"></script>
+    <script src="{% static 'auth.js' %}"></script>
+    <script src="{% static 'sidebar.js' %}"></script>
+    <script src="{% static 'footer.js' %}"></script>
+    <script src="{% static 'support.js' %}"></script>
+    <script src="{% static 'plans.js' %}"></script>
+    <script src="{% static 'translations.js' %}"></script>
+    <script src="{% static 'language-switcher.js' %}"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {

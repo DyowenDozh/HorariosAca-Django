@@ -5,14 +5,11 @@ const passwordInput = document.getElementById("password");
 const confirmPasswordInput = document.getElementById("confirm-password");
 const globalMessage = document.getElementById("globalMessage");
 
-
-// Expresión regular corregida (requiere extensión de dominio válida, ej: .com, .org)
 const emailRegex = /^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/;
 const upperRegex = /[A-Z]/;
 const lowerRegex = /[a-z]/;
 const symbolRegex = /[^A-Za-z0-9]/;
 
-// Alternar visibilidad de las contraseñas
 document.querySelectorAll('.toggle-password').forEach(button => {
     button.addEventListener('click', function() {
         const targetId = this.getAttribute('data-target');
@@ -29,7 +26,6 @@ document.querySelectorAll('.toggle-password').forEach(button => {
     });
 });
 
-// Evento de envío de formulario
 registerForm.addEventListener("submit", async function(e) {
     e.preventDefault(); 
 
@@ -40,13 +36,11 @@ registerForm.addEventListener("submit", async function(e) {
 
     clearErrors();
 
-    // 1. Validación estricta de formato de correo
     if (!emailRegex.test(emailValue)) {
         showError("email", getTxt("error_invalid_email") || "Invalid email address format");
         isValid = false;
     } 
 
-    // 3. Validación de la complejidad de la contraseña
     if (passwordValue.length < 12) {
         showError("password", getTxt("error_password_length") || "Password must be at least 12 characters long");
         isValid = false;
@@ -61,7 +55,6 @@ registerForm.addEventListener("submit", async function(e) {
         isValid = false;
     }
 
-    // 4. Validación de coincidencia de contraseñas
     if (passwordValue !== confirmPasswordValue) {
         showError("confirm-password", getTxt("error_password_mismatch") || "Passwords do not match");
         isValid = false;
@@ -87,10 +80,9 @@ registerForm.addEventListener("submit", async function(e) {
             if (res.ok) {
                 globalMessage.innerText = "Account created! Redirecting...";
                 globalMessage.style.color = "green";
-                setTimeout(() => window.location.href = "login.html", 1500);
+                setTimeout(() => window.location.href = "/login/", 1500);
     
             } else if (res.status === 409) {
-                // Email ya registrado
                 showError("email", data.error || "This email is already registered");
                 globalMessage.innerText = "";
     

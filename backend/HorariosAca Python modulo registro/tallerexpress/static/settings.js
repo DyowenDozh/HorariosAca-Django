@@ -100,12 +100,12 @@ async function eliminarCuenta() {
 
     try {
         const res = await fetch(`http://localhost:8000/api/auth/usuarios/${userId}/delete/`, {
-        method: 'DELETE'
+            method: 'DELETE'
         });
 
         if (res.ok) {
             localStorage.clear();
-            window.location.href = 'register.html';
+            window.location.href = '/register/';
         } else {
             alert(lang === 'es' ? 'Error al eliminar la cuenta.' : 'Error deleting account.');
         }

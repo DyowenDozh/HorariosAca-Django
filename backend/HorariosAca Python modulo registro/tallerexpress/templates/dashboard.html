@@ -1,18 +1,18 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - HorariosAca</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'dashboard.css' %}">
 </head>
 <body>
 
     <main class="internal-content">
         <header class="dashboard-header">
             <h1 data-i18n="dash_title">Schedule Management</h1>
-             <!-- SELECTOR DE IDIOMA tuvo que ser anadido manualmente no como modal -->
             <div class="lang-selector">
                 <button id="lang-switch" class="lang-btn">
                     🌐 <span id="current-lang-text">English</span>
@@ -22,14 +22,13 @@
                     <button onclick="setLanguage('es')">Español</button>
                 </div>
             </div>
-            <!-- SELECTOR DE IDIOMA tuvo que ser anadido manualmente no como modal -->
         </header>
 
         <section class="table-container">
             <div id="schedule-list-container">
             </div>
         </section>
-        <!-- NO HAY BASE DE DATOS REAL, estos son DATOS EJEMPLO de un horario -->
+
         <div id="view-modal" class="modal-hidden">
             <div class="modal-content large">
                 <div class="modal-header">
@@ -44,7 +43,6 @@
                         <div class="timetable-header" data-i18n="day_wed">Wed</div>
                         <div class="timetable-header" data-i18n="day_thu">Thu</div>
                         <div class="timetable-header" data-i18n="day_fri">Fri</div>
-
                         <div class="time-slot">07:00</div>
                         <div class="cell"><div class="subject-card" data-i18n="math">Math</div></div>
                         <div class="cell"></div>
@@ -55,24 +53,20 @@
                 </div>
             </div>
         </div>
-         <!-- NO HAY BASE DE DATOS REAL, estos son DATOS EJEMPLO de un horario -->
 
         <button id="add-schedule-btn" data-i18n="btn_add_schedule" onclick="createNewSchedule()">+</button>
     </main>
-    <!-- SCRIPTS MODULARES Y AUTENTICACION -->
+
     <footer id="main-footer"></footer>
 
-    <script src="auth.js"></script>       
-    <script src="sidebar.js"></script>    
-    <script src="footer.js"></script>    
-    <script src="support.js"></script>   
+    <script src="{% static 'auth.js' %}"></script>
+    <script src="{% static 'sidebar.js' %}"></script>
+    <script src="{% static 'footer.js' %}"></script>
+    <script src="{% static 'support.js' %}"></script>
+    <script src="{% static 'translations.js' %}"></script>
+    <script src="{% static 'language-switcher.js' %}"></script>
+    <script src="{% static 'schedules.js' %}"></script>
 
-    <!-- SCRIPTS DE TRADUCCIÓN -->
-    <script src="translations.js"></script>
-    <script src="language-switcher.js"></script>
-    <script src="schedules.js"></script>
-
-    <!-- INICIALIZACIÓN DE IDIOMA -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const savedLang = localStorage.getItem("preferred_lang") || 'en';

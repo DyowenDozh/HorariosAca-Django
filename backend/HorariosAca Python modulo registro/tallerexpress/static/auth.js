@@ -3,7 +3,7 @@
 function checkAuth() {
     const user = localStorage.getItem("user_name");
     if (!user) {
-        window.location.href = "login.html";
+        window.location.href = "/login/";
     }
 }
 

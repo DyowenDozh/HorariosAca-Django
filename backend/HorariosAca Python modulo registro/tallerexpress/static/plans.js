@@ -12,14 +12,14 @@ function activatePlan(planType) {
         if (proceed) {
             alert(getTxt('alert_payment_success'));
             localStorage.setItem("user_type", "premium");
-            window.location.href = "dashboard.html";
+            window.location.href = "/dashboard/";
         } else {
             alert(getTxt('alert_upgrade_cancelled'));
         }
     } else {
         localStorage.setItem("user_type", "basic");
         alert(getTxt('alert_basic_active'));
-        window.location.href = "dashboard.html";
+        window.location.href = "/dashboard/";
     }
 }
 
@@ -30,5 +30,4 @@ function showPremiumDetails() {
                   "3. " + getTxt('premium_feat_3');
     
     alert(details);
-    /**creo que este es sencillo de entender, solo es la seleccioin de plan, pago y demas */
 }

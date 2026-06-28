@@ -4,7 +4,6 @@ let userSchedules = [
     { id: 2, name: "Extracurricular Activities", date: "2026-03-10", grade: "N/A" }
 ];
 
-// Función auxiliar para obtener textos traducidos en JS
 function getTxt(key) {
     const lang = localStorage.getItem("preferred_lang") || 'en';
     return translations[lang][key] || key;
@@ -18,7 +17,7 @@ function renderScheduleTable() {
         container.innerHTML = `<p data-i18n="no_schedules_msg">No schedules found. Click the + button to create one.</p>`;
         return;
     }
- /** TABLA DE GESTION DE HORARIOS, ID NOMBRE, FECHA, y las acciones, borrar editar duplicar etc */
+
     const tableHTML = `
         <table class="schedule-table">
             <thead>
@@ -56,8 +55,6 @@ function renderScheduleTable() {
     }
 }
 
-// --- ACCIONES, duplicar horario, editar, borrar ---
-
 function duplicateSchedule(id) {
     const original = userSchedules.find(s => s.id === id);
     const copySuffix = getTxt('text_copy'); 
@@ -86,7 +83,7 @@ function editSchedule(id) {
     
     if (userType !== "premium") {
         const upgrade = confirm(getTxt('confirm_upgrade_premium'));
-        if (upgrade) window.location.href = "plans.html";
+        if (upgrade) window.location.href = "/plans/";
         return;
     }
     

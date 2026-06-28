@@ -4,34 +4,27 @@ const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
 const globalMessage = document.getElementById("globalMessage");
 
-//  regular para validar formato de correo electrónico
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-// Evento que se ejecuta al enviar el formulario de login
 loginForm.addEventListener("submit", async function(e) {
     e.preventDefault(); 
 
-    // Obtiene y limpia los valores ingresados por el usuario
     const emailValue = emailInput.value.trim();
     const passwordValue = passwordInput.value.trim();
     let isValid = true;
 
-    // Limpia errores anteriores antes de validar nuevamente
     clearErrors();
 
-    // Valida que el correo tenga un formato correcto
     if (!emailRegex.test(emailValue)) {
         showError("email", "Invalid email address format");
         isValid = false;
     }
 
-    // Valida que la contraseña no esté vacía
     if (passwordValue.length < 1) {
         showError("password", "Password is required");
         isValid = false;
     }
 
-    // Verifica credenciales si todas las validaciones son correctas
     if (isValid) {
         try {
             const res = await fetch("http://localhost:8000/api/auth/login/", {
@@ -50,7 +43,7 @@ loginForm.addEventListener("submit", async function(e) {
                 localStorage.setItem("user_id", data.user_id);
                 globalMessage.innerText = "Authenticating...";
                 globalMessage.style.color = "green";
-                setTimeout(() => window.location.href = "dashboard.html", 1500);
+                setTimeout(() => window.location.href = "/dashboard/", 1500);
     
             } else {
                 globalMessage.innerText = data.error || "Invalid email or password.";
@@ -64,7 +57,6 @@ loginForm.addEventListener("submit", async function(e) {
     }
 });
 
-// Muestra mensajes de error y resalta el input correspondiente
 function showError(fieldId, message) { 
     const errorSpan = document.getElementById(`${fieldId}-error`);
     const inputField = document.getElementById(fieldId);
@@ -78,7 +70,6 @@ function showError(fieldId, message) {
     }
 }
 
-// Limpia todos los mensajes de error y estilos de validación
 function clearErrors() {
     const errorMessages = document.querySelectorAll('.error-msg');
     const inputs = document.querySelectorAll('input');

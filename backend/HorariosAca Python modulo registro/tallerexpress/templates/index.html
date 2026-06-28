@@ -1,10 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - HorariosAca</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
     <style>
         .home-main {
             min-height: 70vh;
@@ -19,11 +20,9 @@
 </head>
 <body>
 
-    <!-- CONTENEDOR NAVBAR  MODULAR -->
     <header id="main-navbar"></header>
 
     <main class="home-main">
-        <!-- TEXTO SUP IZQUIERDO -->
         <section class="hero-intro">
             <div class="purple-banner-main">
                 <h2 data-i18n="home_hero_title">Programa para crear Horario Académico:</h2>
@@ -36,20 +35,17 @@
             </div>
         </section>
     
-        <!-- CARRUSEL E INFO PREMIUM -->
         <section class="promo-section">
-            <!-- IMAGENES DEL CARRUSEL -->
             <div class="carousel-container">
                 <div class="carousel-slide">
-                    <img src="img/horario1.jpg" alt="Ejemplo 1">
-                    <img src="img/horario2.jpg" alt="Ejemplo 2">
-                    <img src="img/horario3.jpg" alt="Ejemplo 3">
+                    <img src="{% static 'img/horario1.jpg' %}" alt="Ejemplo 1">
+                    <img src="{% static 'img/horario2.jpg' %}" alt="Ejemplo 2">
+                    <img src="{% static 'img/horario3.jpg' %}" alt="Ejemplo 3">
                 </div>
             </div>
     
-            <!-- VENTAJAS PREMIUM -->
             <div class="purple-premium-box">
-                <a href="plans.html" class="premium-link" data-i18n="home_premium_click">
+                <a href="/plans/" class="premium-link" data-i18n="home_premium_click">
                     ¡Da clic aquí, para obtener tu plan Premium!
                 </a>
                 
@@ -77,20 +73,13 @@
         </section>
     </main>
 
-    <!-- FOOTER MODULAR-->
     <footer id="main-footer"></footer>
 
-    <!-- SCRIPTS EN ORDEN DE EJECUCIÓN IMPORTANTE!!! TIENEN QUE IR EN ESTE ORDEN -->
-    
-    <!-- MODULARES-->
-    <script src="navbar.js"></script>
-    <script src="footer.js"></script>
-    
-    <!-- TRANSLATE -->
-    <script src="translations.js"></script>
-    <script src="language-switcher.js"></script>
+    <script src="{% static 'navbar.js' %}"></script>
+    <script src="{% static 'footer.js' %}"></script>
+    <script src="{% static 'translations.js' %}"></script>
+    <script src="{% static 'language-switcher.js' %}"></script>
 
-    <!-- PERSISTENCIA IDIOMA-->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const savedLang = localStorage.getItem("preferred_lang") || 'en';
@@ -104,38 +93,24 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Carrusel Automatico
             let currentSlide = 0;
             const slides = document.querySelectorAll('.carousel-slide img');
             
             function nextSlide() {
                 if (slides.length === 0) return;
-
-                // Ocultar todas las imágenes
                 slides.forEach(img => img.style.display = 'none');
-                
-                // Avanzar al siguiente índice
                 currentSlide++;
-                if (currentSlide >= slides.length) {
-                    currentSlide = 0;
-                }
-                
-                // Mostrar la imagen actual
+                if (currentSlide >= slides.length) currentSlide = 0;
                 slides[currentSlide].style.display = 'block';
             }
 
-            // Inicialización del carrusel
             if (slides.length > 0) {
-                // Solo mostramos la primera imagen al empezar
                 slides.forEach((img, index) => {
                     img.style.display = index === 0 ? 'block' : 'none';
                 });
-                
-                // Cambiar cada 3 segundos
                 setInterval(nextSlide, 3000);
             }
 
-            // --- PERSISTENCIA DE IDIOMA ---
             const savedLang = localStorage.getItem("preferred_lang") || 'en';
             setTimeout(() => {
                 if (typeof applyTranslations === 'function') {

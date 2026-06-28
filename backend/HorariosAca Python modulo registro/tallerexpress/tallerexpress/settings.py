@@ -126,3 +126,10 @@ STATIC_URL = 'static/'
 CORS_ALLOW_ALL_ORIGINS = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+
+import os
+
+TEMPLATES[0]['DIRS'] = [BASE_DIR / 'templates']
+
+STATICFILES_DIRS = [BASE_DIR / 'static']
+STATIC_URL = '/static/'
