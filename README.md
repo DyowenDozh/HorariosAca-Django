@@ -54,11 +54,15 @@ Navegar a la carpeta del backend:
 cd "backend/HorariosAca Python modulo registro/tallerexpress"
 ```
 
-Crear y activar el entorno virtual:
+Crear el entorno virtual:
 
 ```bash
-# Windows CMD
 python -m venv .venv
+```
+
+Activarlo (Windows CMD):
+
+```bash
 .venv\Scripts\activate.bat
 ```
 
@@ -68,9 +72,9 @@ Instalar dependencias:
 pip install -r requirements.txt
 ```
 
-> Si `pip` no funciona, usar: `C:\Python314\python.exe -m pip install -r requirements.txt`
+> Si `pip` no funciona, usar la ruta completa: `C:\Python314\python.exe -m pip install -r requirements.txt`
 
-Aplicar migraciones:
+Aplicar migraciones (crea las tablas en MySQL):
 
 ```bash
 python manage.py migrate
@@ -86,11 +90,19 @@ El backend queda disponible en `http://localhost:8000`.
 
 ---
 
-## Uso
+## Cómo ejecutarlo cada vez
 
-1. Iniciar **Laragon** (Start All — Apache + MySQL)
-2. Correr el servidor Django (`python manage.py runserver`)
-3. Abrir en el navegador: [http://localhost/HorariosAca/login.html](http://localhost/HorariosAca/login.html)
+1. Abrir **Laragon** → clic en **Start All** (Apache + MySQL)
+2. Abrir CMD y navegar al backend:
+   ```bash
+   cd "backend/HorariosAca Python modulo registro/tallerexpress"
+   .venv\Scripts\activate.bat
+   python manage.py runserver
+   ```
+3. Abrir en el navegador:
+   ```
+   http://localhost/HorariosAca/login.html
+   ```
 
 ---
 
@@ -111,13 +123,14 @@ El backend queda disponible en `http://localhost:8000`.
 ```
 HorariosAca-Django/
 ├── backend/
-│   └── tallerexpress/
-│       ├── accounts/        # App de usuarios (modelos, vistas, URLs)
-│       ├── tallerexpress/   # Configuración Django (settings, urls)
-│       ├── manage.py
-│       └── requirements.txt
+│   └── HorariosAca Python modulo registro/
+│       └── tallerexpress/
+│           ├── accounts/        # App de usuarios (modelos, vistas, URLs)
+│           ├── tallerexpress/   # Configuración Django (settings, urls)
+│           ├── manage.py
+│           └── requirements.txt
 ├── frontend/
-│   └── HorariosAca/        # HTML, CSS, JS
+│   └── HorariosAca/             # HTML, CSS, JS
 │       ├── login.html
 │       ├── register.html
 │       ├── dashboard.html
@@ -133,7 +146,8 @@ HorariosAca-Django/
 
 - Las contraseñas se almacenan hasheadas con **bcrypt** (Django hashers).
 - El archivo `settings.py` usa credenciales de desarrollo (`root` sin contraseña). No usar en producción.
-- Si MySQL tiene contraseña, editar `backend/.../tallerexpress/settings.py`:
+- Si MySQL tiene contraseña, editar `tallerexpress/settings.py`:
   ```python
   'PASSWORD': 'tu_contraseña',
   ```
+- El `.venv` no está en el repositorio — cada desarrollador debe crearlo localmente con `python -m venv .venv`.
